@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'Employee | '+(edit?'Edit':'Add')}"></title>
+    <link rel="shortcut icon" href="https://tools-by-umid.vercel.app/icons/main-logo-ico.ico" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+</head>
+<body class="bg-primary text-white">
+<div class="col-6 offset-3 my-5">
+    <form th:action="${'/employee/'+(edit?'edit/'+employee.getId():'add')}" method="post">
+        <div class="form-group">
+            <label for="full_name">Name</label>
+            <input th:value="${edit?(employee.getFull_name()):''}" autocomplete="off" placeholder="Enter name" type="text" name="full_name" id="full_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="departmentId">Department</label>
+            <select class="form-control" name="departmentId" id="departmentId">
+                <option th:selected="${edit?((employee.getDepartment().getId()==department.id)?true:false):false}"
+                        th:each="department: ${departmentList}"
+                        th:value="${department.id}"
+                        th:text="${department.name}"
+                ></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" th:text="(edit?'Edit':'Add')"></button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

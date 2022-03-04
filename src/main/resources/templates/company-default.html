@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${'Company | '+(edit?'Edit':'Add')}"></title>
+    <link rel="shortcut icon" href="https://tools-by-umid.vercel.app/icons/main-logo-ico.ico" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+</head>
+<body class="bg-primary text-white">
+<div class="col-6 offset-3 my-5">
+    <form th:action="${'/company/'+(edit?'edit/'+company.getId():'add')}" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input th:value="${edit?(company.getName()):''}"
+                   autocomplete="off" placeholder="Enter name" type="text" name="name" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success" th:text="${edit?'Edit':'Add'}"></button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

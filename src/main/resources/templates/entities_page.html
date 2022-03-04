@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${current.getName()}"></title>
+    <link rel="shortcut icon" href="https://tools-by-umid.vercel.app/icons/main-logo-ico.ico" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+</head>
+<body style="width: 100vw;height: 100vh;overflow: hidden" class="bg-primary text-white d-flex">
+<div class="w-25 border-right py-3" style="height: 100vh; overflow-y: auto">
+    <div th:each="entity: ${entities}" th:class="${'px-5 py-1'}">
+        <div>
+            <a th:class="${'font-weight-bold nav-link '
+            +((entity.getName().equalsIgnoreCase(current.getName()))?'text-dark':'text-white')}"
+               th:href="${entity.url}" th:text="${entity.name}"></a>
+        </div>
+    </div>
+</div>
+<div class="w-75" style="height: 100vh; overflow-y: auto">
+    <div class="container">
+        <nav>
+            <h1 th:text="${current.getName()+' Page'}"></h1>
+            <a th:href="${'/'+current.getName().toLowerCase()+'/add'}" class="btn btn-success">Add</a>
+        </nav>
+        <main class="mt-3">
+            <table class="table table-hover text-center">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th th:each="field: ${current.fields}"
+                        th:text="${(field.substring(0,1).toUpperCase()+field.substring(1)).replaceAll('_',' ')}"></th>
+                    <th >Operations</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:if="${list.size()==0}" th:colspan="${current.fields.length+2}">
+                        Nothing to show
+                    </td>
+                </tr>
+                <tr th:each=" object,i : ${list}">
+                    <td th:text="${i.index+1}"></td>
+                    <td th:each="field: ${current.fields}"
+                        th:text="${@thymeObjectParser.parse(object.get(field), field)}"></td>
+                    <td class="">
+                        <a class="btn btn-warning"
+                           th:href="${'/'+current.getName().toLowerCase()+'/edit/'
+                           +@thymeMath.round(object.get('id'))}">Edit</a>
+                        <a class="btn btn-danger ml-2"
+                           th:href="${'/'+current.getName().toLowerCase()+'/delete/'
+                                        +@thymeMath.round(object.get('id'))}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </main>
+
+    </div>
+</div>
+
+
+</body>
+</html>
