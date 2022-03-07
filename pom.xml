@@ -49,11 +49,6 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.27.0-GA</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -70,10 +65,6 @@
                         <exclude>
                             <groupId>com.google.code.gson</groupId>
                             <artifactId>gson</artifactId>
-                        </exclude>
-                        <exclude>
-                            <groupId>org.javassist</groupId>
-                            <artifactId>javassist</artifactId>
                         </exclude>
                     </excludes>
                 </configuration>
