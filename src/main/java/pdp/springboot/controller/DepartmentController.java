@@ -8,15 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pdp.springboot.dto.Constants;
 import pdp.springboot.dto.DepartmentDTO;
-import pdp.springboot.dto.EmployeeDTO;
-import pdp.springboot.entity.Company;
 import pdp.springboot.entity.Department;
-import pdp.springboot.entity.Employee;
 import pdp.springboot.repository.CompanyRepository;
 import pdp.springboot.repository.DepartmentRepository;
 import pdp.springboot.services.DepartmentService;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
