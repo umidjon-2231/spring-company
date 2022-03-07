@@ -62,10 +62,6 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
-                        <exclude>
-                            <groupId>com.google.code.gson</groupId>
-                            <artifactId>gson</artifactId>
-                        </exclude>
                     </excludes>
                 </configuration>
             </plugin>
