@@ -21,10 +21,11 @@ public class CompanyController {
     CompanyService service;
     @Autowired
     CompanyRepository companyRepository;
+    @Autowired
+    Gson gson;
 
     @GetMapping
     public String getPage(Model model){
-        Gson gson=new Gson();
         model.addAttribute("current", Constants.entities.get(0));
         model.addAttribute("entities", Constants.entities);
         List<Map<String, String>> list= gson.fromJson(

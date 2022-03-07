@@ -29,10 +29,11 @@ public class EmployeeController {
     EmployeeService employeeService;
     @Autowired
     DepartmentRepository departmentRepository;
+    @Autowired
+    Gson gson;
 
     @GetMapping
     public String getPage(Model model){
-        Gson gson=new Gson();
         model.addAttribute("current", Constants.entities.get(2));
         model.addAttribute("entities", Constants.entities);
         List<Map<String, String>> list= gson.fromJson(
