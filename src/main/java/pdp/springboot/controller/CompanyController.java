@@ -17,7 +17,6 @@ import java.util.Map;
 
 @Controller
 @RequestMapping( "/company")
-@ConditionalOnClass(value = {Gson.class})
 public class CompanyController {
     @Autowired
     CompanyService service;

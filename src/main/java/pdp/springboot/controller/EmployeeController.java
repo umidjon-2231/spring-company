@@ -21,7 +21,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/employee")
-@ConditionalOnClass(Gson.class)
 
 public class EmployeeController {
     @Autowired

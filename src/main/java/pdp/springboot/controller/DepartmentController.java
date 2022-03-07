@@ -20,7 +20,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/department")
-@ConditionalOnClass(Gson.class)
 
 public class DepartmentController {
     @Autowired
