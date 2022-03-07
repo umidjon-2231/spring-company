@@ -71,6 +71,10 @@
                             <groupId>com.google.code.gson</groupId>
                             <artifactId>gson</artifactId>
                         </exclude>
+                        <exclude>
+                            <groupId>org.javassist</groupId>
+                            <artifactId>javassist</artifactId>
+                        </exclude>
                     </excludes>
                 </configuration>
             </plugin>
