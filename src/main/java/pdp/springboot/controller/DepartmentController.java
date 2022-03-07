@@ -16,6 +16,7 @@ import pdp.springboot.repository.CompanyRepository;
 import pdp.springboot.repository.DepartmentRepository;
 import pdp.springboot.services.DepartmentService;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -75,15 +76,7 @@ public class DepartmentController {
     }
     @PostMapping("/edit/{id}")
     public String editEmployee(@PathVariable Integer id, @ModelAttribute DepartmentDTO departmentDTO){
-        Department department=new Department();
-        Optional<Company> company = companyRepository.findById(departmentDTO.getCompanyId());
-        if(company.isEmpty()){
-            return "redirect:/department";
-        }
-        department.setId(id);
-        department.setCompany(company.get());
-        department.setName(departmentDTO.getName());
-        departmentRepository.save(department);
+        departmentService.edit(id, departmentDTO);
         return "redirect:/department";
     }
 }

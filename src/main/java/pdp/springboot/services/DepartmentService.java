@@ -33,4 +33,18 @@ public class DepartmentService {
         Department save = departmentRepository.save(department);
         return new ApiResponse("Saved", true, save);
     }
+
+    public ApiResponse edit(Integer id, DepartmentDTO departmentDTO){
+        Optional<Department> optionalDepartment = departmentRepository.findById(id);
+        if(optionalDepartment.isEmpty())return new ApiResponse("department not found",false);
+        Department department=optionalDepartment.get();
+        Optional<Company> company = companyRepository.findById(departmentDTO.getCompanyId());
+        if(company.isEmpty()){
+            return new ApiResponse("company not found", false);
+        }
+        department.setCompany(company.get());
+        department.setName(departmentDTO.getName());
+        departmentRepository.save(department);
+        return new ApiResponse("Department saved!", true);
+    }
 }
