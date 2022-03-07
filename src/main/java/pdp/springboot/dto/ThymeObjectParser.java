@@ -5,8 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pdp.springboot.entity.Company;
-import pdp.springboot.entity.Department;
 
 import java.util.Map;
 
